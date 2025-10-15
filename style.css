@@ -1,0 +1,715 @@
+/* ===================================================
+STYLE UTAMA – Brew & Co Café Website
+=================================================== */
+
+/* ===============================
+   VARIABEL WARNA & DASAR
+=============================== */
+:root {
+  --bg-main: #f6f1eb;
+  --coffee-dark: #8b5e3c;
+  --coffee-hover: #70452b;
+  --text-main: #2e2e2e;
+  --white: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ===============================
+   SECTION UMUM
+=============================== */
+section {
+  padding: 80px 10%;
+  text-align: center;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  color: #111;
+}
+
+p {
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.subtitle {
+  max-width: 600px;
+  margin: 15px auto 45px;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* ===============================
+   NAVBAR
+=============================== */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #af8966;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 16px 10%;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  justify-content: center;
+  gap: 3.5rem;
+  list-style: none;
+  font-weight: 700;
+}
+
+.nav-left {
+  justify-content: flex-end;
+  margin-right: 2rem;
+}
+
+.nav-right {
+  justify-content: flex-start;
+  margin-left: 2rem;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #70441b;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.nav-left a,
+.nav-right a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-left a:hover,
+.nav-right a:hover,
+.nav-left a.active,
+.nav-right a.active {
+  color: var(--coffee-dark);
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .navbar {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 14px 5%;
+  }
+
+  .nav-left,
+  .nav-right {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 0;
+  }
+
+  .logo {
+    order: -1;
+    margin-bottom: 5px;
+  }
+}
+
+/* ===============================
+   HERO SECTION
+=============================== */
+.hero {
+  height: 100vh;
+  background: url('https://mir-s3-cdn-cf.behance.net/project_modules/2800_opt_1/958f00104375759.5f61b4a76febd.jpg')
+              center / cover no-repeat fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: #fff;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 40px;
+}
+
+.hero-content h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #f5deb3;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  animation: fadeUp 1.2s ease forwards;
+  opacity: 0;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  color: #f3f3f3;
+  margin-bottom: 25px;
+  animation: fadeUp 1.6s ease forwards;
+  opacity: 0;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  animation: fadeUp 1.8s ease forwards;
+  opacity: 0;
+}
+
+.btn-primary,
+.btn-outline {
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--coffee-dark);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: var(--coffee-hover);
+}
+
+.btn-outline {
+  border: 2px solid var(--white);
+  background: transparent;
+  color: var(--white);
+}
+
+.btn-outline:hover {
+  background-color: var(--white);
+  color: var(--coffee-dark);
+}
+
+@keyframes fadeUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ===============================
+   MENU SECTION
+=============================== */
+.menu-section {
+  background-color: var(--white);
+}
+
+.menu-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+/* CSS BARU UNTUK .menu-toggle button */
+.menu-toggle button {
+  background-color: transparent;
+  border: 2px solid var(--coffee-dark); /* Gunakan warna tema kopi */
+  color: var(--coffee-dark);
+  padding: 10px 28px; /* Sedikit lebih besar agar lega */
+  border-radius: 30px; /* Lebih membulat seperti tombol di hero */
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin: 0 5px; /* Beri sedikit jarak */
+}
+
+.menu-toggle button.active {
+  background-color: var(--coffee-dark); /* Latar belakang solid saat aktif */
+  color: var(--white);
+  border-color: var(--coffee-dark);
+}
+
+.menu-toggle button:not(.active):hover {
+  background-color: #eaddd2; /* Warna hover yang lembut */
+  border-color: var(--coffee-hover);
+}
+
+.menu-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-gallery {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 20px 0;
+  scroll-snap-type: x mandatory;
+}
+
+.menu-gallery::-webkit-scrollbar {
+  display: none;
+}
+
+/* CSS BARU UNTUK .menu-item */
+.menu-item {
+  min-width: 220px;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: var(--white);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Shadow lebih halus */
+  scroll-snap-align: start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex; /* Menggunakan flexbox untuk layout */
+  flex-direction: column;
+}
+
+.menu-item:hover {
+  transform: translateY(-10px); /* Efek mengangkat lebih terasa */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.menu-item .img-wrapper { /* Tambahan wrapper untuk gambar */
+  height: 200px;
+  overflow: hidden;
+}
+
+.menu-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease; /* Transisi untuk zoom */
+}
+
+.menu-item:hover img {
+  transform: scale(1.05); /* Efek zoom-in pada gambar saat hover */
+}
+
+.menu-item p {
+  font-weight: 600;
+  padding: 15px 10px; /* Padding lebih seimbang */
+  color: var(--coffee-dark);
+  background-color: var(--white);
+  flex-grow: 1; /* Memastikan p memenuhi sisa ruang */
+  margin-top: -5px; /* Sedikit overlap untuk estetika */
+}
+
+/* CSS BARU UNTUK .scroll-btn */
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--white); /* Latar belakang putih */
+  color: var(--coffee-dark); /* Ikon warna kopi */
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem; /* Ukuran ikon sedikit lebih kecil */
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* Bayangan yang jelas */
+  z-index: 10;
+  display: flex; /* Agar ikon di tengah */
+  justify-content: center;
+  align-items: center;
+}
+
+.scroll-btn:hover {
+  background-color: var(--coffee-dark);
+  color: var(--white);
+  transform: translateY(-50%) scale(1.1); /* Efek membesar saat hover */
+}
+
+.scroll-btn.left {
+  left: 15px; /* Pindahkan ke dalam area galeri */
+}
+
+.scroll-btn.right {
+  right: 15px; /* Pindahkan ke dalam area galeri */
+}
+
+/* ===============================
+   ABOUT SECTION
+=============================== */
+/* ===============================
+   ABOUT SECTION (Teks kiri, gambar kanan)
+=============================== */
+.about-section {
+  background: linear-gradient(rgba(212, 183, 146, 0.9), rgba(246, 241, 235, 0.9)),
+              url("image/Coffebeans.jpg") center/cover no-repeat;
+  padding: 80px 10%;
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  max-width: 1100px;
+  width: 100%;
+}
+
+.about-text {
+  flex: 1;
+  text-align: left;
+}
+
+.about-text h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #3a2a20;
+  font-family: 'Playfair Display', serif;
+}
+
+.about-text p {
+  line-height: 1.8;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.about-image {
+  flex: 1;
+  text-align: right;
+}
+
+.about-image img {
+  width: 90%;
+  max-width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .about-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-content {
+    flex-direction: column;
+  }
+
+  .about-image {
+    text-align: center;
+  }
+
+  .about-image img {
+    width: 80%;
+    max-width: 300px;
+  }
+}
+
+/* ===============================
+   TESTIMONIALS SECTION
+=============================== */
+.testimonials-grid {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.testimonial-card {
+  background-color: var(--white);
+  border-radius: 15px;
+  padding: 25px;
+  max-width: 350px;
+  text-align: left;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.stars {
+  color: var(--coffee-dark);
+  margin-bottom: 10px;
+}
+
+.quote {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.author img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+/* ===============================
+   CONTACT SECTION
+=============================== */
+.contact-section {
+  background-color: var(--coffee-dark);
+  color: var(--white);
+  padding: 10px 10%;
+  text-align: center;
+}
+
+.contact-section h2,
+.contact-section h3,
+.contact-section p {
+  color: var(--white);
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin: 2rem 1rem;
+}
+
+.info-item {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+
+.info-item:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ===============================
+   FEEDBACK SECTION
+=============================== */
+.feedback-section {
+  background-color: var(--bg-main); /* Warna latar yang sama dengan body */
+}
+
+.feedback-form {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+  background-color: var(--white);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #444;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--coffee-dark);
+  box-shadow: 0 0 0 3px rgba(139, 94, 60, 0.2);
+}
+
+.form-group textarea {
+  resize: vertical; /* Membolehkan user mengubah tinggi textarea */
+}
+
+/* Style untuk Rating Bintang */
+.star-rating {
+  display: flex;
+  direction: rtl; /* Trik agar hover bekerja dari kanan ke kiri */
+  justify-content: center;
+}
+
+.star {
+  font-size: 2.5rem;
+  color: #ddd;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.star-rating:hover .star,
+.star.selected,
+.star:hover,
+.star:hover ~ .star {
+  color: #ffc107; /* Warna emas untuk bintang */
+}
+
+/* Balikkan lagi urutan hover karena direction: rtl */
+.star-rating:hover .star:hover ~ .star {
+  color: #ddd;
+}
+
+.error-message {
+  color: #d9534f; /* Warna merah untuk error */
+  font-size: 0.85rem;
+  margin-top: 5px;
+  min-height: 1em; /* Beri ruang agar layout tidak "loncat" */
+}
+
+.feedback-form .btn-primary {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+/* ===============================
+   FOOTER
+=============================== */
+.footer {
+  background-color: #5f3610;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+.footer p {
+  color: #d6baba;
+}
+
+/* ===============================
+   RESPONSIVE
+=============================== */
+@media (max-width: 768px) {
+  .hero-content h1 { font-size: 2.2rem; }
+  .menu-gallery { gap: 15px; }
+  .about-section img {
+    width: 80%;
+    max-width: 250px;
+  }
+}
+
+/* ===============================
+   MODAL POPUP STYLE
+=============================== */
+.modal {
+  display: none; /* awalnya disembunyikan */
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 25px 20px;
+  border-radius: 15px;
+  width: 85%;
+  max-width: 400px; /* <<< lebih kecil dari 500px */
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.3s ease;
+}
+
+
+.modal-content img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.modal-content h3 {
+  color: #5a3e27;
+  margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+}
+
+.modal-content ul {
+  list-style: disc;
+  padding-left: 20px;
+  text-align: left;
+  color: #333;
+}
+
+.close-btn {
+  color: #555;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-btn:hover {
+  color: #a35d2d;
+}
+
+/* animasi lembut saat modal muncul */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
